@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import modele.exception.DomainException;
 import modeule.entities.Reservation;
 
 public class Program {
@@ -39,9 +40,13 @@ public class Program {
 		catch(ParseException e) {
 			System.out.println("Invalid date format");
 		}
-		catch(IllegalArgumentException e) {
+		catch(DomainException e) {
 			System.out.println("Error in reservation: "+ e.getMessage());
 		}
+		catch(RuntimeException e) {
+			System.out.println("Unexpected error");
+		}
+		
 					sc.close();
 
 	}
